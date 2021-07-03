@@ -75,7 +75,7 @@ public class OptionalPerformanceTest {
             sumOfGsonCopy += (after-before);
         }
         
-        System.out.println("sumOfGsonCopy: " + sumOfGsonCopy / max);
+        System.out.println("AvgOfGsonCopy: " + sumOfGsonCopy / max);
         assertTrue(sumOfGsonCopy / max < 1);
     }
     
@@ -104,8 +104,8 @@ public class OptionalPerformanceTest {
             sumOfReadValue += (after-before);
         }
         
-        System.out.println("sumOfTreeToValue: " + sumOfTreeToValue / max);
-        System.out.println("sumOfReadValue: " + sumOfReadValue / max);
+        System.out.println("AvgOfTreeToValue: " + sumOfTreeToValue / max);
+        System.out.println("AvgOfReadValue: " + sumOfReadValue / max);
         assertTrue(sumOfTreeToValue / max < 1);
         assertTrue(sumOfReadValue / max < 1);
     }
