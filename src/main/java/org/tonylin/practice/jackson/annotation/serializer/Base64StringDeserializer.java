@@ -20,7 +20,6 @@ public class Base64StringDeserializer extends StdDeserializer<String> {
 		public String deserialize(JsonParser parser, DeserializationContext context)
 				throws IOException, JsonProcessingException {
 			String text = parser.getValueAsString();
-			
 			return new String(Base64.getDecoder().decode(text));
 		}
 }
