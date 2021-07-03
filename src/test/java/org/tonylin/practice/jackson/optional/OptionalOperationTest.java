@@ -36,37 +36,6 @@ public class OptionalOperationTest {
     }
     
     @Test
-    public void Should_LessThan1Ms_When_DeepCopyThreeLevelObject() throws JsonProcessingException, IllegalArgumentException {
-        givenGuavaAndJdk8Module();        
-        ParentObject parentObject = givenThreeLevelObject();
-        
-        sut.treeToValue(sut.valueToTree(parentObject), ParentObject.class);
-        sut.readValue(sut.writeValueAsString(parentObject), ParentObject.class);
-        
-        final double max = 10000;
-        long sumOfTreeToValue = 0;
-        for( int i = 0 ; i < max ; i++ ) {
-            long before = System.currentTimeMillis();
-            sut.treeToValue(sut.valueToTree(parentObject), ParentObject.class);
-            long after = System.currentTimeMillis();
-            sumOfTreeToValue += (after-before);
-        }
-        
-        long sumOfReadValue = 0;
-        for( int i = 0 ; i < max ; i++ ) {
-            long before = System.currentTimeMillis();
-            sut.readValue(sut.writeValueAsString(parentObject), ParentObject.class);
-            long after = System.currentTimeMillis();
-            sumOfReadValue += (after-before);
-        }
-        
-        System.out.println("sumOfTreeToValue: " + sumOfTreeToValue / max);
-        System.out.println("sumOfReadValue: " + sumOfReadValue / max);
-        assertTrue(sumOfTreeToValue / max < 1);
-        assertTrue(sumOfReadValue / max < 1);
-    }
-    
-    @Test
     public void Should_GetSameCopy_When_DeepCopyThreeLevelObject() throws JsonProcessingException, IllegalArgumentException {
         givenGuavaAndJdk8Module();        
         ParentObject parentObject = givenThreeLevelObject();
